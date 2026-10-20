@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LazySort AI — Local file organization</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="/static/css/upload.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="LazySort AI home"><span class="mark">LS</span><span>LazySort <b>AI</b></span></a>
+    <div id="modelStatus" class="model-status" role="status"><span></span> Checking Gemma…</div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">LOCAL-FIRST FILE ORGANIZER</p>
+      <h1>Drop the mess.<br><em>Let AI sort it out.</em></h1>
+      <p class="intro">Turn a cluttered folder into a clear, useful structure. Gemma reads just enough to understand each file—then you approve every move.</p>
+      <div class="privacy"><span aria-hidden="true">⌂</span><div><strong>Local by default</strong><br><small>With localhost Ollama, file content stays on this machine.</small></div></div>
+    </section>
+
+    <section class="workspace" aria-labelledby="workspaceTitle">
+      <div class="step"><span>01</span><div><p>SELECT A FOLDER</p><h2 id="workspaceTitle">What should we tidy?</h2></div></div>
+      <form id="scanForm" class="folder-form">
+        <label for="folder">Folder path</label>
+        <div class="folder-row"><input id="folder" name="folder" placeholder="/Users/you/Downloads" required autocomplete="off"><button type="button" id="chooseFolder" class="browse-button">Choose folder</button><button type="submit">Scan folder <span>→</span></button></div>
+        <input id="folderUpload" type="file" webkitdirectory multiple hidden aria-label="Choose a folder to upload">
+        <p class="field-help">Choose folder uploads a safe working copy. Your original folder is not changed. Entering a local path organizes that folder directly.</p>
+        <label class="check"><input id="recursive" type="checkbox"> Include subfolders</label>
+      </form>
+      <div id="progress" class="progress" role="status" aria-live="polite" hidden></div>
+    </section>
+
+    <section id="results" class="results" hidden aria-labelledby="resultsTitle">
+      <div class="results-head"><div class="step"><span>02</span><div><p>REVIEW THE PLAN</p><h2 id="resultsTitle">Nothing moves without you.</h2></div></div><div class="actions"><button id="selectAll" class="secondary">Approve all</button><button id="clearAll" class="text-button">Clear</button></div></div>
+      <div id="stats" class="stats"></div>
+      <p class="edit-hint">You can edit any folder or filename before approval.</p>
+      <div id="operations" class="operations"></div>
+      <div class="execute-bar"><div><strong id="approvedCount">0 approved</strong><small>Low-confidence files always need your attention.</small></div><button id="execute" disabled>Organize approved <span>→</span></button></div>
+    </section>
+
+    <section class="how-to" aria-labelledby="howTitle"><p class="eyebrow">HOW IT WORKS</p><h2 id="howTitle">From clutter to calm in four steps.</h2><ol><li><strong>Choose</strong><span>Upload a working copy or enter a local folder path.</span></li><li><strong>Analyze</strong><span>Gemma reads bounded snippets and proposes a plan.</span></li><li><strong>Review</strong><span>Edit names, select files, and approve the changes.</span></li><li><strong>Organize</strong><span>Move safely—and undo the run whenever needed.</span></li></ol></section>
+
+    <section class="promise"><p>OUR PROMISE</p><h2>LazySort never deletes your files.</h2><p>Every change is logged. Every completed run can be undone. The model proposes; you decide.</p><button id="undo" class="secondary">Undo last run</button></section>
+  </main>
+  <footer><span>LazySort AI</span><span>Open source · Powered by Gemma + Ollama</span></footer>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
